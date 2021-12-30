@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ubuntu 部署jenkins | 人间废鱼的自闭城</title><meta name="keywords" content="jenkins,ubuntu"><meta name="author" content="人间废鱼"><meta name="copyright" content="人间废鱼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="服务器部署 jenkinsjenkinsci&#x2F;blueocean 安装docker pull jenkinsci&#x2F;blueocean doker 部署 jenkinsdocker run -d -u root --name jenkins -p 8080:8080 -p 50000:50000 -v &#x2F;data&#x2F;jenkins_home:&#x2F;var&#x2F;jenkins_home jenkinsci&#x2F;bl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu 部署jenkins">
+<meta property="og:url" content="https://kaleb.top/2021/12/10/dhm7uz/index.html">
+<meta property="og:site_name" content="人间废鱼的自闭城">
+<meta property="og:description" content="服务器部署 jenkinsjenkinsci&#x2F;blueocean 安装docker pull jenkinsci&#x2F;blueocean doker 部署 jenkinsdocker run -d -u root --name jenkins -p 8080:8080 -p 50000:50000 -v &#x2F;data&#x2F;jenkins_home:&#x2F;var&#x2F;jenkins_home jenkinsci&#x2F;bl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/article1.png">
+<meta property="article:published_time" content="2021-12-10T11:10:00.000Z">
+<meta property="article:modified_time" content="2021-12-30T03:41:46.330Z">
+<meta property="article:author" content="人间废鱼">
+<meta property="article:tag" content="jenkins">
+<meta property="article:tag" content="ubuntu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/article1.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="https://kaleb.top/2021/12/10/dhm7uz/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="LpcKsmMh1OFnKwtmWjwxTWf5lU0ace6EEBeUua_w8oc"/><meta name="baidu-site-verification" content="code-afn07fltFS"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis&amp;family=Ubuntu:ital@1&amp;family=ZCOOL+KuaiLe&amp;family=ZCOOL+XiaoWei&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":90,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 人间废鱼","link":"链接: ","source":"来源: 人间废鱼的自闭城","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ubuntu 部署jenkins',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-30 03:41:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-daodao/main.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/daodao/"><i class="fa-fw fas fa-comment-dollar"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/article1.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">人间废鱼的自闭城</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/daodao/"><i class="fa-fw fas fa-comment-dollar"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ubuntu 部署jenkins</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-10T11:10:00.000Z" title="发表于 2021-12-10 11:10:00">2021-12-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-30T03:41:46.330Z" title="更新于 2021-12-30 03:41:46">2021-12-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/jenkins%E9%83%A8%E7%BD%B2/">jenkins部署</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">443</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ubuntu 部署jenkins"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="服务器部署-jenkins"><a href="#服务器部署-jenkins" class="headerlink" title="服务器部署 jenkins"></a>服务器部署 jenkins</h1><h2 id="jenkinsci-blueocean-安装"><a href="#jenkinsci-blueocean-安装" class="headerlink" title="jenkinsci/blueocean 安装"></a>jenkinsci/blueocean 安装</h2><p><code>docker pull jenkinsci/blueocean</code></p>
+<h2 id="doker-部署-jenkins"><a href="#doker-部署-jenkins" class="headerlink" title="doker 部署 jenkins"></a>doker 部署 jenkins</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -u root --name jenkins -p 8080:8080 -p 50000:50000 -v /data/jenkins_home:/var/jenkins_home jenkinsci/blueocean:lts</span><br><span class="line"></span><br><span class="line">docker run -d -u root --name jenkins -p 8080:8080 -p 50000:50000 -v /workspace/data/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v /etc/timezone:/etc/timezone -v /etc/localtime:/etc/localtime jenkinsci/blueocean:1.25.1</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看-Jenkins-启动情况"><a href="#查看-Jenkins-启动情况" class="headerlink" title="查看 Jenkins 启动情况"></a>查看 Jenkins 启动情况</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看启动项</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment"># 查看全部</span></span><br><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="Jenkins-容器-docker-run-之后状态-Exited"><a href="#Jenkins-容器-docker-run-之后状态-Exited" class="headerlink" title="Jenkins 容器 docker run 之后状态 Exited"></a>Jenkins 容器 docker run 之后状态 Exited</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看docker日志 ：</span></span><br><span class="line">docker logs jenkins</span><br><span class="line">发现是目前权限问题</span><br><span class="line">因为/data/jenkins_home 目录是root权限</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chown -R 1000 /data/jenkins_home //用户组改变</span><br></pre></td></tr></table></figure>
+
+<h2 id="Jenkins-首次登录需要密码"><a href="#Jenkins-首次登录需要密码" class="headerlink" title="Jenkins 首次登录需要密码"></a>Jenkins 首次登录需要密码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 进入容器</span><br><span class="line">docker <span class="built_in">exec</span> -it de20d10b6046（容器id） bash</span><br><span class="line">cat /var/jenkins_home/secrets/initialAdminPassword //查看密码</span><br></pre></td></tr></table></figure>
+
+<h1 id="jenkins-部署项目"><a href="#jenkins-部署项目" class="headerlink" title="jenkins 部署项目"></a>jenkins 部署项目</h1><h2 id="添加节点"><a href="#添加节点" class="headerlink" title="添加节点"></a>添加节点</h2><h3 id="进入容器-创建-ssh-证书-连接寄主机"><a href="#进入容器-创建-ssh-证书-连接寄主机" class="headerlink" title="进入容器 创建 ssh 证书 连接寄主机"></a>进入容器 创建 ssh 证书 连接寄主机</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 生成证书</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;kingpi@163.com&quot;</span> -f ~/.ssh/host-rsa</span><br><span class="line"><span class="comment"># 进入.ssh</span></span><br><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加-config"><a href="#添加-config" class="headerlink" title="添加 config"></a>添加 config</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host 172.17.0.1（寄主机docker ip）</span><br><span class="line">  HostName 172.17.0.1</span><br><span class="line">  User root</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/host-rsa</span><br></pre></td></tr></table></figure>
+
+<h3 id="寄主机进入-ssh"><a href="#寄主机进入-ssh" class="headerlink" title="寄主机进入 ~/.ssh"></a>寄主机进入 ~/.ssh</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入文件-authorizedkeys"><a href="#进入文件-authorizedkeys" class="headerlink" title="进入文件 authorizedkeys"></a>进入文件 authorized<em>keys</em></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi authorized_keys</span><br><span class="line"><span class="comment"># 输入 上面创建的 连接寄主机 ssh证书公钥</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="jenkins-添加-节点"><a href="#jenkins-添加-节点" class="headerlink" title="jenkins 添加 节点"></a>jenkins 添加 节点</h3><p><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.nlark.com/yuque/0/2021/png/12843443/1639905060247-d3efccf6-07ce-4c0a-a0c5-18ec83675637.png#clientId=u984dde43-e76a-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=827&id=u55e900d0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1654&originWidth=1500&originalType=binary&ratio=1&rotation=0&showTitle=false&size=201536&status=done&style=none&taskId=ue16f108e-3a9b-49df-bcd6-08e50d0d147&title=&width=750" alt="image.png"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.nlark.com/yuque/0/2021/png/12843443/1639148328357-e4a2e1fc-dfe2-44c0-9f91-7ce1b52c4250.png#clientId=uf90b85fc-dc9a-4&crop=0&crop=0&crop=1&crop=1&from=drop&id=u78cce22e&margin=%5Bobject%20Object%5D&name=WeChatb3c23b7241c04b4d5134e43d23656cf8.png&originHeight=2848&originWidth=2456&originalType=binary&ratio=1&rotation=0&showTitle=false&size=687327&status=done&style=none&taskId=u6f0019ae-dea2-4eae-af76-3fbf9c2f624&title=" alt="WeChatb3c23b7241c04b4d5134e43d23656cf8.png"></p>
+<h2 id="jenkins-容器内创建连接-github-证书"><a href="#jenkins-容器内创建连接-github-证书" class="headerlink" title="jenkins 容器内创建连接 github 证书"></a>jenkins 容器内创建连接 github 证书</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;kingpi@163.com&quot;</span> -f ~/.ssh/github.com</span><br><span class="line"><span class="comment"># config 添加host</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="jenkins-添加凭证-如上面-图"><a href="#jenkins-添加凭证-如上面-图" class="headerlink" title="jenkins 添加凭证 如上面 图"></a>jenkins 添加凭证 如上面 图</h3><h2 id="连接远程服务器"><a href="#连接远程服务器" class="headerlink" title="连接远程服务器"></a>连接远程服务器</h2><h3 id="jenkins-容器内创建证书"><a href="#jenkins-容器内创建证书" class="headerlink" title="jenkins 容器内创建证书"></a>jenkins 容器内创建证书</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;kingpi@163.com&quot;</span> -m PEM -P <span class="string">&quot;&quot;</span> -f ~/.ssh/yooleap.net</span><br><span class="line"><span class="comment"># config 添加host</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="jenkins-系统配置配置服务器信息-添加上私钥"><a href="#jenkins-系统配置配置服务器信息-添加上私钥" class="headerlink" title="jenkins 系统配置配置服务器信息 添加上私钥"></a>jenkins 系统配置配置服务器信息 添加上私钥</h3><p><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.nlark.com/yuque/0/2021/png/12843443/1639905151450-e9034ac2-81fb-428b-b6f6-36978883d693.png#clientId=u984dde43-e76a-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=499&id=u4481f8db&margin=%5Bobject%20Object%5D&name=image.png&originHeight=998&originWidth=1182&originalType=binary&ratio=1&rotation=0&showTitle=false&size=117393&status=done&style=none&taskId=uda1e8286-f585-45a9-bff9-86651c4b5fd&title=&width=591" alt="image.png"></p>
+<h3 id="遇到的问题-1"><a href="#遇到的问题-1" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接服务器测试报错</span></span><br><span class="line">jenkins.plugins.publish_over.BapPublisherException: Failed to add SSH key. Message [invalid privatekey: [B@59df330d]_</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解决方法</span></span><br><span class="line">ssh openSSH 版本过高 改用RSA</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;kingpi@163.com&quot;</span> -m PEM -P <span class="string">&quot;&quot;</span> -f ~/.ssh/yooleap.net</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">人间废鱼</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kaleb.top/2021/12/10/dhm7uz/">https://kaleb.top/2021/12/10/dhm7uz/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kaleb.top" target="_blank">人间废鱼的自闭城</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/jenkins/">jenkins</a><a class="post-meta__tags" href="/tags/ubuntu/">ubuntu</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/article1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/wechat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/01/ual5ig/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/article1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">element-plus修改主题色</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/19/xu9t5l/"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/article3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">nginx配置</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2-jenkins"><span class="toc-number">1.</span> <span class="toc-text">服务器部署 jenkins</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jenkinsci-blueocean-%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">jenkinsci&#x2F;blueocean 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#doker-%E9%83%A8%E7%BD%B2-jenkins"><span class="toc-number">1.2.</span> <span class="toc-text">doker 部署 jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-Jenkins-%E5%90%AF%E5%8A%A8%E6%83%85%E5%86%B5"><span class="toc-number">1.3.</span> <span class="toc-text">查看 Jenkins 启动情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkins-%E5%AE%B9%E5%99%A8-docker-run-%E4%B9%8B%E5%90%8E%E7%8A%B6%E6%80%81-Exited"><span class="toc-number">1.4.1.</span> <span class="toc-text">Jenkins 容器 docker run 之后状态 Exited</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">解决方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jenkins-%E9%A6%96%E6%AC%A1%E7%99%BB%E5%BD%95%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81"><span class="toc-number">1.5.</span> <span class="toc-text">Jenkins 首次登录需要密码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jenkins-%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">jenkins 部署项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">添加节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8-%E5%88%9B%E5%BB%BA-ssh-%E8%AF%81%E4%B9%A6-%E8%BF%9E%E6%8E%A5%E5%AF%84%E4%B8%BB%E6%9C%BA"><span class="toc-number">2.1.1.</span> <span class="toc-text">进入容器 创建 ssh 证书 连接寄主机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0-config"><span class="toc-number">2.1.2.</span> <span class="toc-text">添加 config</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E4%B8%BB%E6%9C%BA%E8%BF%9B%E5%85%A5-ssh"><span class="toc-number">2.1.3.</span> <span class="toc-text">寄主机进入 ~&#x2F;.ssh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E6%96%87%E4%BB%B6-authorizedkeys"><span class="toc-number">2.1.4.</span> <span class="toc-text">进入文件 authorizedkeys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jenkins-%E6%B7%BB%E5%8A%A0-%E8%8A%82%E7%82%B9"><span class="toc-number">2.1.5.</span> <span class="toc-text">jenkins 添加 节点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jenkins-%E5%AE%B9%E5%99%A8%E5%86%85%E5%88%9B%E5%BB%BA%E8%BF%9E%E6%8E%A5-github-%E8%AF%81%E4%B9%A6"><span class="toc-number">2.2.</span> <span class="toc-text">jenkins 容器内创建连接 github 证书</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jenkins-%E6%B7%BB%E5%8A%A0%E5%87%AD%E8%AF%81-%E5%A6%82%E4%B8%8A%E9%9D%A2-%E5%9B%BE"><span class="toc-number">2.2.1.</span> <span class="toc-text">jenkins 添加凭证 如上面 图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">连接远程服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jenkins-%E5%AE%B9%E5%99%A8%E5%86%85%E5%88%9B%E5%BB%BA%E8%AF%81%E4%B9%A6"><span class="toc-number">2.3.1.</span> <span class="toc-text">jenkins 容器内创建证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jenkins-%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF-%E6%B7%BB%E5%8A%A0%E4%B8%8A%E7%A7%81%E9%92%A5"><span class="toc-number">2.3.2.</span> <span class="toc-text">jenkins 系统配置配置服务器信息 添加上私钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98-1"><span class="toc-number">2.3.3.</span> <span class="toc-text">遇到的问题</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Es-Caleb/CDN@1.0/image/article1.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 By 人间废鱼</div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p><div>I am just folk.I have mood swings.</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'wQRiT3puqwxM9Qv1xgpCGHLS-gzGzoHsz',
+      appKey: 'yFiaXjAUzpzcTBO757durN3K',
+      placeholder: '记得留下你的昵称和邮箱....可以快速收到回复',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+      master: 'aaf43d5c3d054f22dd56cf138d847794'.split(','),
+      friends: ''.split(','),
+      tagMeta: '站长,小伙伴,访客'.split(','),
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="I,LOVE,YOU" data-fontsize="14px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>function electric_clock_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+                console.log('已挂载electric_clock')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            electric_clock_injector_config()
+        } </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax  src="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.js"></script><script data-pjax>function daodao_swiper_injector_config(){
+                var parent_div_git = document.getElementById('recent-posts');
+                var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="bbTimeList container" style="height: auto;width: 100%" id="bbTimeList"><i class="bber-gotobb fas fa-bullhorn" onclick="location=&#39;/daodao/&#39;" title="叨叨"></i><div class="swiper-container" id="bbtalk"><div class="swiper-wrapper" id="bber-talk" onclick="location=&#39;/daodao/&#39;"></div></div><i class="bber-gotobb fas fa-arrow-circle-right" onclick="location=&quot;/daodao/&quot;" title="查看全文"></i></div></div>';
+                console.log('已挂载daodao_swiper')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+
+            daodao_swiper_injector_config()
+        } </script><script >var bbsurl = "https://daodao-phi.vercel.app/api?q=20";var fliter_daodao = ['img','iframe']</script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-daodao/main.js"></script><!-- hexo injector body_end end --></body></html>
